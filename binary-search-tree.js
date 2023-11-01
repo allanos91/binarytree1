@@ -1,3 +1,5 @@
+const { returns } = require("chai-spies");
+
 // Do not change this
 class TreeNode {
   constructor(val) {
@@ -15,17 +17,24 @@ class BinarySearchTree {
 
   insert(val, currentNode=this.root) {
     const newNode = new TreeNode(val)
-    if (!currentNode) {
+    if (this.root === null) {
       this.root = newNode
       return
-      // newNode.left = null
-      // newNode.right = null
     }
     if (val < currentNode.val) {
+      if (!currentNode.left) {
         currentNode.left = newNode
+      } else {
+        this.insert(val, currentNode.left)
       }
+    }
+
     if (val > currentNode.val) {
-      currentNode.right = newNode
+      if (!currentNode.right) {
+        currentNode.right = newNode
+      } else {
+        this.insert(val, currentNode.right)
+      }
       }
 
   }
