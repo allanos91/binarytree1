@@ -39,19 +39,33 @@ class BinarySearchTree {
 
   }
 
-  search(val, tree = this.root) {
-
-    if (tree === null) return false
-
-    if (val === tree.val) return true
-
-    if (val < tree.val) {
-      return this.search(val, tree.left)
+  search(val) {
+    let tree = this.root
+    while (tree) {
+      if (val === tree.val) {
+        return true
+      }
+      else if (val < tree.val) {
+        tree = tree.left
+      }
+      else if (val > tree.val) {
+        tree = tree.right
+      }
     }
+    return false
+    //tree = this.root) {
 
-    if (val > tree.val) {
-      return this.search(val, tree.right)
-    }
+    // if (tree === null) return false
+
+    // if (val === tree.val) return true
+
+    // if (val < tree.val) {
+    //   return this.search(val, tree.left)
+    // }
+
+    // if (val > tree.val) {
+    //   return this.search(val, tree.right)
+    // }
   }
 
 
