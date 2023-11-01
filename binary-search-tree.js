@@ -39,8 +39,19 @@ class BinarySearchTree {
 
   }
 
-  search(val) {
-    // Your code here
+  search(val, tree = this.root) {
+
+    if (tree === null) return false
+
+    if (val === tree.val) return true
+
+    if (val < tree.val) {
+      return this.search(val, tree.left)
+    }
+
+    if (val > tree.val) {
+      return this.search(val, tree.right)
+    }
   }
 
 
